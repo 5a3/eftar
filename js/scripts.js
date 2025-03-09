@@ -86,32 +86,3 @@
 
 })(jQuery);
 
-// تحديد تاريخ الإفطار (10 مارس)
-const ramadan10 = new Date("March 10, 2024 00:00:00").getTime();
-
-// تحديث العداد كل ثانية
-const x = setInterval(function() {
-  // الحصول على التاريخ والوقت الحاليين
-  const now = new Date().getTime();
-
-  // حساب الفرق بين التاريخين
-  const distance = ramadan10 - now;
-
-  // حساب الأيام والساعات والدقائق والثواني
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  // عرض النتائج في العناصر المناسبة
-  document.getElementById("days").innerHTML = days;
-  document.getElementById("hours").innerHTML = hours;
-  document.getElementById("minutes").innerHTML = minutes;
-  document.getElementById("seconds").innerHTML = seconds;
-
-  // إذا انتهى العد التنازلي
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("timer").innerHTML = "حان موعد الإفطار!";
-  }
-}, 1000);
