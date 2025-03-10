@@ -481,7 +481,9 @@ footer{
    background:#2C3335;
    border-radius:4px
 }
+
 .project-image img {
+   display: inline-block;
    width: 100%; /* يجعل الصورة تمتد بكامل عرض العنصر */
    max-width: 100%; /* الحد الأقصى للعرض */
    height: auto; /* يجعل الارتفاع متناسقًا مع العرض */
@@ -490,8 +492,14 @@ footer{
    border-radius: 10px; /* إضافة زوايا مستديرة */
    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2); /* إضافة ظل للصورة */
 }
-.project-image{
-   float:right
+@media (max-width: 767px) {
+   .project-image {
+       float: none !important;
+       width: 100%;
+   }
+}
+.project-image {
+   text-align: center;
 }
 .project-info{
    position:absolute;
