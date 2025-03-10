@@ -712,11 +712,13 @@ footer{
 header.active {
     width: 100%;
 	}
-@media only screen and (max-width: 768px)
-header {
+@media only screen and (max-width: 768px){
+ header {
     width: 100%;
+ }
 }
-@media only screen and (max-width: 768px)
-#mobile-menu-open, #mobile-menu-close {
-    z-index: 99999;
+@media only screen and (max-width: 768px) {
+   #mobile-menu-open, #mobile-menu-close {
+       z-index: 99999;
+   }
 }
