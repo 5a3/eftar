@@ -1,216 +1,374 @@
 <!DOCTYPE html>
-<html class="no-js"
-dir="rtl"
- lang="ar">
+<html class="no-js" dir="rtl" lang="ar">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>الإفطار السنوي الجماعي</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Meta Data محسن -->
+    <meta name="description" content="موقع الإفطار السنوي الجماعي لمديرية حريضة - حدث رمضاني يجمع المجتمع في جو من التكافل والتراحم">
+    <meta name="keywords" content="الإفطار الرمضاني, مديرية حريضة, رمضان, إفطار جماعي, عمل تطوعي">
+    <meta name="author" content="م. أحمد العطاس">
+    <meta property="og:title" content="الإفطار السنوي الجماعي لمديرية حريضة">
+    <meta property="og:description" content="حدث رمضاني يجمع المجتمع في جو من التكافل والتراحم">
+    <meta property="og:image" content="https://raw.githubusercontent.com/5a3/eftar/main/images/project.jpeg">
+    <meta property="og:url" content="موقع الإفطار الرمضاني">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <title>الإفطار السنوي الجماعي - مديرية حريضة</title>
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
     <link href="css/styles.css" rel="stylesheet">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HLEDMYQMDF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HLEDMYQMDF');
-</script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HLEDMYQMDF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-HLEDMYQMDF');
+    </script>
 </head>
 
-<body>
-   
-    <div id="mobile-menu-open" class="shadow-large">
-        <i class="fa fa-bars" aria-hidden="true"></i>
-    </div>
-    <!-- End #mobile-menu-toggle -->
-    <header>
-        <div id="mobile-menu-close">
-            <span>Close</span> <i class="fa fa-times" aria-hidden="true"></i>
-        </div>
-        <ul id="menu" class="fixed-top shadow">
-            <li>
-                <a href="#about">ماهو الحدث</a>
-            </li>
-           
-            <li>
-                <a href="#experience">الأهداف</a>
-            </li>
+<body class="light-mode">
+    <!-- زر تبديل المود -->
+    <button id="theme-toggle" class="theme-toggle-btn animate__animated animate__fadeIn">
+        <i class="fas fa-moon"></i>
+        <span class="theme-text">الوضع الليلي</span>
+    </button>
+    
+    <!-- زر للعودة للأعلى -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <!-- قائمة التنقل -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand animate__animated animate__fadeIn" href="#">
+                <i class="fas fa-mosque me-2"></i>إفطار حريضة
+            </a>
             
-            <li>
-                <a href="#education">صور من الحدث</a>
-            </li>
-        </li>
-        <li>
-            <a href="#projects">اللجنة المنظمة للإفطار</a>
-        </li>
-           
-            <li>
-                <a href="#contact">تواصل معنا</a>
-            </li>
-        </ul>
-    </header>
-    <!-- End header -->
-    <div id="lead">
-        <div id="lead-content">
-            <h1 style="font-family:'Courier New', Courier, monospace;"> الإفطار الجماعي لمديرية حريضة </h1>
-            <div class="countdown">
-                <h3 style="color:#ddf1ff;  margin-bottom: 10px;">لتصفح صور الإفطار ل لعام 2024/2025 انقر  <a href="#education">هنا</a></h3>
-                <div class="countdown">
-                    <p>نلقاكم بإذن لله في العام القادم 2026 للإفطار الثالث</p>
-                    <div id="timer">
-                      <span id="days"></span> أيام و
-                      <span id="hours"></span> ساعات و
-                      <span id="minutes"></span> دقائق و
-                      <span id="seconds"></span> ثواني
-                    </div>
-                  </div>
+            <button id="mobile-menu-open" class="navbar-toggler" type="button">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">ماهو الحدث</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">الأهداف</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">صور من الحدث</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">اللجنة المنظمة</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">تواصل معنا</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- القائمة المتنقلة للجوال -->
+    <div id="mobile-menu-close" class="mobile-menu-overlay">
+        <div class="mobile-menu-content">
+            <button class="close-mobile-menu">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul>
+                <li><a href="#about">ماهو الحدث</a></li>
+                <li><a href="#experience">الأهداف</a></li>
+                <li><a href="#education">صور من الحدث</a></li>
+                <li><a href="#projects">اللجنة المنظمة</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- القسم الرئيسي -->
+    <section id="lead">
+        <div class="lead-overlay"></div>
+        <div class="container">
+            <div class="lead-content animate__animated animate__fadeInUp">
+                <h1 class="lead-title">الإفطار الجماعي لمديرية حريضة</h1>
+                <p class="lead-subtitle">تقاليد رمضانية تنبض بالخير والتكافل</p>
                 
-              </div>
-        </div>
-        <!-- End #lead-content -->
-
-        <div id="lead-overlay"></div>
-
-        <div id="lead-down">
-            <span>
-                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            </span>
-        </div>
-        <!-- End #lead-down -->
-    </div>
-    <!-- End #lead -->
-
-    <div id="about" dir="ltr">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h2 class="heading dark-yellow">ماهو هذا الحدث </h2>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                       <h3> الإفطار الجماعي: روح رمضان في لمة الأحباب
-
-                        الإفطار الجماعي هو تقليد رمضاني أصيل، يجسد روح التكافل والتراحم التي يتميز بها هذا الشهر الفضيل. إنه أكثر من مجرد وجبة طعام، إنه فرصة للتلاقي والتقارب، وتبادل الأحاديث الودية، وتقوية الروابط الاجتماعية.
-                       </h3>
-                      <h3>  فكرة شبابية تنبض بالخير:
-                        
-                        الإفطار الجماعي الذي نقوم به هو مبادرة شبابية نابعة من قلوب مؤمنة بأهمية التواصل والتآلف. نؤمن بأن رمضان هو شهر الخير والبركة، وشهر العطاء والتسامح، ونريد أن نجسد هذه المعاني الجميلة من خلال جمع الناس على مائدة واحد</p>
-                      </h3>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End #about -->
-
-    <div id="experience" class="background-alt">
-        <h2 class="heading dark-yellow">ماهي الأهداف</h2>
-        <div id="experience-timeline">
-            <div >
-                <h3>تعزيز التكافل الاجتماعي والتراحم</h3>
-                <p> يهدف إلى توفير وجبات إفطار وتعزيز روح التكافل والتراحم بين الناس</p>
-                    
-            </div>
-
-            <div>
-                <h3>تشجيع العمل التطوعي</h3>
-                <p>يهدف هذا الهدف إلى تشجيع أفراد المجتمع على المشاركة في العمل التطوعي.
-                </p>
-            </div>
-
-            <div>
-                <h3>إحياء سنة إفطار الصائم</h3>
-                <p>
-                    إحياء السنة وإتاحة الفرصة لأهل الخير لاكتساب أجر افطار الصائم في رمضان
-                </p>
-            </div>
-        </div>
-    </div>
-    <!-- End #experience -->
-
-    <div id="education">
-        <h2 class="heading dark-yellow">صور الحدث</h2>
-        <div class="education-block" dir="rtl">
-            <h3>إفطار سنة 2024</h3>
-            <span class="education-date">رمضان 1445هجري</span>
-            <h4>قم بالضغط علئ الرابط  أدناه لتصفح الصور</h4>
-            <p style="font-size: large;">
-                <a href="https://drive.google.com/drive/folders/1dc6jkXbwGkls9FytVgUZ0pBAhoSL-57u" target="_blank" rel="noopener noreferrer">رابط صور الحدث</a>
-            </p>
-        </div>
-        <!-- End .education-block -->
-
-        <div class="education-block">
-            <h3>إفطار سنة 2025</h3>
-            <span class="education-date">رمضان 1446 هجري</span>
-            <h4>قم بالضغط علئ الرابط  أدناه لتصفح الصور</h4>
-            <p style="font-size: large;">
-                <a href="https://drive.google.com/drive/folders/1WZNp9SdCwf81WChh11JYNCDs1cpXcOKX" target="_blank" rel="noopener noreferrer">رابط صور الحدث</a>
-            </p>
-        </div>
-        <!-- End .education-block -->
-    </div>
-    <!-- End #education -->
-
-    <div id="projects" class="background-alt">
-        <h2 class="heading dark-yellow">اللجنة المنظمة للإفطار</h2>
-        <div class="container">
-            <div class="row">
-                <div class="">
-                    <div class="project-image">
-                        
-                        <img src="https://raw.githubusercontent.com/5a3/eftar/main/images/project.jpeg"  alt="صوره الللجنه" class="img-responsive">
+                <div class="countdown-box animate__animated animate__zoomIn">
+                    <h3>الإفطار القادم: رمضان 2026</h3>
+                    <div class="countdown" id="countdown">
+                        <div class="countdown-item">
+                            <span id="days" class="countdown-number">00</span>
+                            <span class="countdown-label">أيام</span>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <span id="hours" class="countdown-number">00</span>
+                            <span class="countdown-label">ساعات</span>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <span id="minutes" class="countdown-number">00</span>
+                            <span class="countdown-label">دقائق</span>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <span id="seconds" class="countdown-number">00</span>
+                            <span class="countdown-label">ثواني</span>
+                        </div>
                     </div>
-                    <!-- End .project-image -->
-                    
-              
+                    <p class="countdown-note">لتصفح صور الإفطار للعام 2024/2025 انقر <a href="#education">هنا</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#about" class="lead-down animate__animated animate__bounce">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
 
-    <footer  id="contact">
+    <!-- قسم ماهو الحدث -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0 animate__animated animate__fadeInLeft">
+                    <div class="about-image">
+                        <img src="images/lead-bg.jpg" 
+                             alt="إفطار جماعي رمضاني" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+                <div class="col-lg-6 animate__animated animate__fadeInRight">
+                    <h2 class="section-title">ماهو هذا الحدث</h2>
+                    <div class="about-content">
+                        <p class="about-text">
+                            الإفطار الجماعي هو تقليد رمضاني أصيل، يجسد روح التكافل والتراحم التي يتميز بها هذا الشهر الفضيل. إنه أكثر من مجرد وجبة طعام، إنه فرصة للتلاقي والتقارب، وتبادل الأحاديث الودية، وتقوية الروابط الاجتماعية.
+                        </p>
+                        <p class="about-text">
+                            فكرة شبابية تنبض بالخير: الإفطار الجماعي الذي نقوم به هو مبادرة شبابية نابعة من قلوب مؤمنة بأهمية التواصل والتآلف. نؤمن بأن رمضان هو شهر الخير والبركة، وشهر العطاء والتسامح، ونريد أن نجسد هذه المعاني الجميلة من خلال جمع الناس على مائدة واحدة.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الأهداف -->
+    <section id="experience" class="section-padding bg-alt">
+        <div class="container">
+            <h2 class="section-title text-center">أهداف الإفطار الجماعي</h2>
+            <div class="row mt-5">
+                <div class="col-md-4 mb-4 animate__animated animate__fadeInUp" data-wow-delay="0.1s">
+                    <div class="goal-card">
+                        <div class="goal-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 class="goal-title">تعزيز التكافل الاجتماعي</h3>
+                        <p class="goal-text">
+                            يهدف إلى توفير وجبات إفطار وتعزيز روح التكافل والتراحم بين الناس، وتقوية الروابط الاجتماعية في المجتمع.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="goal-card">
+                        <div class="goal-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="goal-title">تشجيع العمل التطوعي</h3>
+                        <p class="goal-text">
+                            تشجيع أفراد المجتمع على المشاركة في العمل التطوعي والمبادرات الاجتماعية التي تخدم الصالح العام.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 animate__animated animate__fadeInUp" data-wow-delay="0.3s">
+                    <div class="goal-card">
+                        <div class="goal-icon">
+                            <i class="fas fa-star-and-crescent"></i>
+                        </div>
+                        <h3 class="goal-title">إحياء سنة إفطار الصائم</h3>
+                        <p class="goal-text">
+                            إحياء السنة النبوية وإتاحة الفرصة لأهل الخير لاكتساب أجر إفطار الصائم في شهر رمضان المبارك.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم صور الحدث -->
+    <section id="education" class="section-padding">
+        <div class="container">
+            <h2 class="section-title text-center">صور من الحدث</h2>
+            <div class="row mt-5">
+                <div class="col-md-6 mb-4 animate__animated animate__fadeInLeft">
+                    <div class="event-card">
+                        <div class="event-header">
+                            <h3 class="event-title">إفطار سنة 2024</h3>
+                            <span class="event-date">رمضان 1445 هجري</span>
+                        </div>
+                        <div class="event-image">
+                            <img src="images/eftar_24.jpg" 
+                                 alt="إفطار 2024" class="img-fluid">
+                        </div>
+                        <div class="event-body">
+                            <p class="event-description">
+                                شهد إفطار 2024 مشاركة واسعة من أبناء المديرية في جو من الألفة والمحبة.
+                            </p>
+                            <a href="https://drive.google.com/drive/folders/1dc6jkXbwGkls9FytVgUZ0pBAhoSL-57u" 
+                               target="_blank" class="event-link">
+                                <i class="fas fa-images me-2"></i>تصفح ألبوم الصور
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 animate__animated animate__fadeInRight">
+                    <div class="event-card">
+                        <div class="event-header">
+                            <h3 class="event-title">إفطار سنة 2025</h3>
+                            <span class="event-date">رمضان 1446 هجري</span>
+                        </div>
+                        <div class="event-image">
+                            <img src="images/eftar_25.jpg"
+                                 alt="إفطار 2025" class="img-fluid">
+                        </div>
+                        <div class="event-body">
+                            <p class="event-description">
+                                ازداد عدد المشاركين في إفطار 2025 مع فعاليات وأنشطة مصاحبة للحدث.
+                            </p>
+                            <a href="https://drive.google.com/drive/folders/1WZNp9SdCwf81WChh11JYNCDs1cpXcOKX" 
+                               target="_blank" class="event-link">
+                                <i class="fas fa-images me-2"></i>تصفح ألبوم الصور
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم اللجنة المنظمة -->
+    <section id="projects" class="section-padding bg-alt">
+        <div class="container">
+            <h2 class="section-title text-center">اللجنة المنظمة للإفطار</h2>
+            <div class="row mt-5 align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0 animate__animated animate__fadeInLeft">
+                    <div class="committee-image text-center">
+                        <img src="https://raw.githubusercontent.com/5a3/eftar/main/images/project.jpeg" 
+                             alt="اللجنة المنظمة" class="img-fluid rounded shadow-lg">
+                        <div class="image-caption mt-3">
+                            <p>اللجنة المنظمة لإفطار مديرية حريضة</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate__animated animate__fadeInRight">
+                    <div class="committee-info">
+                        <h3 class="committee-title">فريق العمل</h3>
+                        <p class="committee-text">
+                            تتكون اللجنة المنظمة من مجموعة من الشباب المتطوعين الذين يعملون بجد وتفانٍ لتنظيم هذا الحدث السنوي. يعمل الفريق على جميع الترتيبات اللوجستية والتنسيقية لضمان نجاح الإفطار الجماعي كل عام.
+                        </p>
+                        <div class="committee-stats row mt-4">
+                            <div class="col-6">
+                                <div class="stat-item">
+                                    <h4 class="stat-number">3+</h4>
+                                    <p class="stat-label">سنوات من العمل</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat-item">
+                                    <h4 class="stat-number">50+</h4>
+                                    <p class="stat-label">متطوع</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer id="contact" class="section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-sm-5 copyright">
-                    <b style="font-size:large;">
-                        
-                        برمجه وتطوير &copy; <p style="color: rgb(255, 255, 255);"><a href="https://5a3.github.io/Profile/" target="_blank" rel="noopener noreferrer">م.أحمد العطاس</a></p>
-                    </b>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-brand">
+                        <h3 class="brand-name">
+                            <i class="fas fa-mosque me-2"></i>إفطار حريضة
+                        </h3>
+                        <p class="brand-description">
+                            مبادرة مجتمعية لتعزيز التكافل الاجتماعي في شهر رمضان المبارك.
+                        </p>
+                    </div>
                 </div>
-                <div class="col-sm-2 top">
-                    <span id="to-top">
-                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
-                    </span>
+                
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-developer">
+                        <h4 class="footer-title">برمجة وتطوير</h4>
+                        <p class="developer-name">
+                            <a href="https://5a3.github.io/Profile/" target="_blank" class="developer-link">
+                                <i class="fas fa-code me-2"></i>م. أحمد العطاس
+                            </a>
+                        </p>
+                    </div>
                 </div>
-                <div class="col-sm-5 social">
-                    <ul>
-                        <li>
-                            <a href="https://www.instagram.com/AHMED_ALATTAS910/"style="--i:8" target="_blank"><i class='fa fa-instagram' ></i></a>
-                        </li>
-                        <li>
-                            <a href="https://www.snapchat.com/add/a3ats?share_id=RcrITGti-zw&locale=ar-EG"style="--i:8" target="_blank"><i class='fa fa-snapchat' ></i></a>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/people/%D8%A3%D8%AD%D9%85%D8%AF-%D8%A7%D9%84%D8%B9%D8%B7%D8%A7%D8%B3/pfbid0k8TmdPYmUZrsdcN5crMQBcBuRWtgyJmn9eMQqTncFbC3ZjviVaaaSiNuAQkRpMpXl/?mibextid=ZbWKwL"style="--i:10" target="_blank"><i class='fa fa-facebook'></i></a>
-                        </li>
-                        <li>
-                            <a href="https://api.whatsapp.com/send?phone=+967716226912"style="--i:9" target="_blank"><i class='fa fa-whatsapp'></i></a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/5a3"style="--i:10" target="_blank"><i class='fa fa-github'></i></a>
-                        </li>
-                    </ul>
+                
+                <div class="col-lg-4">
+                    <div class="footer-social">
+                        <h4 class="footer-title">تواصل معنا</h4>
+                        <div class="social-icons">
+                            <a href="https://www.instagram.com/AHMED_ALATTAS910/" class="social-icon" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.facebook.com/people/%D8%A3%D8%AD%D9%85%D8%AF-%D8%A7%D9%84%D8%B9%D8%B7%D8%A7%D8%B3/pfbid0k8TmdPYmUZrsdcN5crMQBcBuRWtgyJmn9eMQqTncFbC3ZjviVaaaSiNuAQkRpMpXl/?mibextid=ZbWKwL" class="social-icon" target="_blank">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://api.whatsapp.com/send?phone=+967716226912" class="social-icon" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://github.com/5a3" class="social-icon" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.snapchat.com/add/a3ats?share_id=RcrITGti-zw&locale=ar-EG" class="social-icon" target="_blank">
+                                <i class="fab fa-snapchat"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            
+            <div class="footer-bottom mt-5 pt-4 border-top text-center">
+                <p class="copyright">جميع الحقوق محفوظة &copy; إفطار حريضة <span id="current-year"></span></p>
             </div>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script src="js/scripts.js"></script>
     
-
-    <!-- End footer -->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/scripts.min.js"></script>
+    <script>
+        // تهيئة WOW.js للأنيميشن
+        new WOW().init();
+        
+        // تحديث السنة الحالية
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
-
 </html>
