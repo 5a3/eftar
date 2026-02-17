@@ -1,12 +1,15 @@
-// scripts.js
+// scripts.js - الموقع الرسمي لإفطار مديرية حريضة
+// يعتمد على التاريخ الهجري الرسمي لليمن
 
 // تهيئة الصفحة عند التحميل
 document.addEventListener('DOMContentLoaded', function() {
-    // تهيئة المود الافتراضي
+    console.log('📍 تهيئة موقع إفطار حريضة...');
+    
+    // تهيئة المود الليلي والصباحي
     initTheme();
     
-    // تهيئة العداد التنازلي
-    initCountdown();
+    // تهيئة العداد التنازلي بناءً على التاريخ الهجري الرسمي
+    initHijriCountdownOfficial();
     
     // تهيئة التنقل السلس
     initSmoothScroll();
@@ -19,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // تهيئة أنيميشن العناصر عند الظهور
     initScrollAnimations();
+    
+    console.log('✅ تم تهيئة الموقع بنجاح!');
 });
 
 /* ===== نظام المود الليلي والصباحي ===== */
@@ -61,17 +66,48 @@ function initTheme() {
     }
 }
 
-/* ===== العداد التنازلي ===== */
-function initCountdown() {
-    // تاريخ الإفطار القادم (10 مارس 2026)
-    const targetDate = new Date('March 10, 2026 18:00:00').getTime();
+/* ===== العداد التنازلي الرسمي المعتمد على تاريخ اليمن ===== */
+function initHijriCountdownOfficial() {
+    // بناءً على إعلان اليمن الرسمي:
+    // 1 رمضان 1447 هـ = الأربعاء 18 فبراير 2026
+    // 10 رمضان 1447 هـ = الجمعة 27 فبراير 2026 [citation:7][citation:9]
+    
+    // تاريخ 10 رمضان 1447 هـ حسب تقويم اليمن الرسمي
+    const targetDate = new Date(2026, 1, 27); // 27 فبراير 2026 (ملاحظة: الشهر 1 = فبراير)
+    targetDate.setHours(17, 45, 0, 0); // الساعة 5:45 مساءً
+    
+    // حساب التاريخ الهجري للعرض
+    const hijriYear = 1447;
+    const hijriMonth = 9; // رمضان
+    const hijriDay = 10;
+    
+    // تحديث عنوان العداد
+    const countdownTitle = document.querySelector('.countdown-box h3');
+    if (countdownTitle) {
+        countdownTitle.innerHTML = `🌙 الإفطار الجماعي: 10 رمضان ${hijriYear} هـ (الجمعة 27 فبراير)`;
+    }
+    
+    // تحديث الملاحظة
+    const countdownNote = document.querySelector('.countdown-note');
+    if (countdownNote) {
+        countdownNote.innerHTML = 'لتصفح صور الإفطار للعام 2024/2025 انقر <a href="#education">هنا</a>';
+    }
+    
+    console.log(`📅 تاريخ الإفطار: 10 رمضان ${hijriYear} هـ الموافق 27 فبراير 2026 الساعة 5:45 مساءً`);
     
     function updateCountdown() {
         const now = new Date().getTime();
-        const timeLeft = targetDate - now;
+        const targetTime = targetDate.getTime();
+        const timeLeft = targetTime - now;
         
+        // التحقق إذا انتهى الوقت
         if (timeLeft < 0) {
-            document.getElementById('countdown').innerHTML = '<h3>لقد حان وقت الإفطار!</h3>';
+            document.getElementById('countdown').innerHTML = `
+                <div style="text-align: center; color: #f0ad4e; font-size: 2rem; animation: pulse 1s infinite;">
+                    <i class="fas fa-check-circle"></i> 
+                    الإفطار يبدأ الآن!
+                </div>
+            `;
             return;
         }
         
@@ -97,20 +133,48 @@ function initCountdown() {
         if (hours === 23 && minutes === 59 && seconds === 59) {
             animateCountdownItem('hours');
         }
-        if (days > 0 && hours === 23 && minutes === 59 && seconds === 59) {
-            animateCountdownItem('days');
+        
+        // تغيير اللون وإضافة رسائل خاصة حسب الأيام المتبقية
+        const noteElement = document.querySelector('.countdown-note');
+        
+        if (days === 9) {
+            document.getElementById('days').style.color = '#f0ad4e';
+            noteElement.innerHTML = '✨ بعد 9 أيام... نلتقي على مائدة الرحمن ✨';
+        } else if (days === 5) {
+            document.getElementById('days').style.color = '#f0ad4e';
+            noteElement.innerHTML = '🌟 5 أيام متبقية... الاستعدادات النهائية 🌟';
+        } else if (days === 3) {
+            document.getElementById('days').style.color = '#f0ad4e';
+            noteElement.innerHTML = '🤲 3 أيام متبقية 🤲';
+        } else if (days === 2) {
+            document.getElementById('days').style.color = '#f0ad4e';
+            noteElement.innerHTML = '🌙 بعد غدٍ... الإفطار الكبير إن شاء الله 🌙';
+        } else if (days === 1) {
+            document.getElementById('days').style.color = '#f0ad4e';
+            noteElement.innerHTML = '⭐ غداً... كل عام وأنتم بخير ⭐';
+        } else if (days === 0) {
+            document.getElementById('days').style.color = '#f0ad4e';
+            noteElement.innerHTML = '🤲 اليوم الكبير... دعواتكم بالخير والبركة 🤲';
+        }
+        
+        // إظهار عدد الأيام الصحيح (من المفترض أن يكون 9 أيام)
+        if (days === 9) {
+            console.log('✅ العداد يعمل بشكل صحيح: 9 أيام متبقية');
         }
     }
     
     function animateCountdownItem(id) {
         const element = document.getElementById(id);
-        element.style.transform = 'scale(1.2)';
-        element.style.color = 'var(--secondary-color)';
+        const parent = element.parentElement;
+        
+        parent.style.transform = 'scale(1.1)';
+        parent.style.transition = 'transform 0.2s ease';
+        parent.style.backgroundColor = 'rgba(240, 173, 78, 0.2)';
         
         setTimeout(() => {
-            element.style.transform = 'scale(1)';
-            element.style.color = '';
-        }, 300);
+            parent.style.transform = 'scale(1)';
+            parent.style.backgroundColor = '';
+        }, 200);
     }
     
     // تحديث العد التنازلي كل ثانية
@@ -287,3 +351,14 @@ document.querySelectorAll('button, .btn, .event-link').forEach(button => {
 
 // تحديث السنة الحالية في التذييل
 document.getElementById('current-year').textContent = new Date().getFullYear();
+
+// إضافة أنيميشن pulse للعداد
+const style = document.createElement('style');
+style.innerHTML = `
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+`;
+document.head.appendChild(style);
