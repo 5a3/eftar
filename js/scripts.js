@@ -105,7 +105,7 @@ function initHijriCountdownOfficial() {
             document.getElementById('countdown').innerHTML = `
                 <div style="text-align: center; color: #f0ad4e; font-size: 2rem; animation: pulse 1s infinite;">
                     <i class="fas fa-check-circle"></i> 
-                     نراكم في2027 سيتم رفع جميع الصور للحدث اللليله باذن لله
+                     نراكم في2027 سيتم رفع جميع الصور الحدث باذن لله
                 </div>
             `;
             return;
